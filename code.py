@@ -1,4 +1,7 @@
+# number of jobs
 n = int(input("Please enter the number of jobs: "))
+
+# read the job details
 jobs = []
 for i in range(n):
     start_time = int(input("Please enter start time: "))
@@ -6,10 +9,10 @@ for i in range(n):
     profit = int(input("Please enter profit value: "))
     jobs.append([start_time, end_time, profit])
 
-#Sort the jobs in ascending order of start time
+# sort the jobs in increasing order of their end time
 jobs.sort(key = lambda x:x[0])
 
-#Lokesh picks job with maximum profit
+# iterate through each job and assign it to Anirudh if it doesn't overlap with the current job
 max_profit = 0
 for job in jobs:
     if job[2] > max_profit:
@@ -19,11 +22,12 @@ for job in jobs:
 #Remove the selected job from the jobs list
 jobs.remove(max_job)
 
-#Calculate the number of jobs and total earnings left for other employees
+# calculate the remaining jobs and their profits
 number_jobs = len(jobs)
 total_earnings = 0
 for job in jobs:
     total_earnings += job[2]
-
+    
+# print the output
 print("Number of jobs left for other employees: ", number_jobs)
 print("Total earnings left for other employees: ", total_earnings)
